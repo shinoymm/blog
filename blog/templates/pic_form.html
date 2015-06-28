@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  <form action="{% url 'pic' %}" method="post" enctype="multipart/form-data">
+    <div class="file-field input-field">
+      <input class="file-path validate" type="text"/>
+      {{form.pic}}<div class="red-text">{{form.error}}</div>
+      {% csrf_token %}
+      <button class="btn waves-effect waves-light" type="submit">ADD</button>
+    </div>
+
+  </form>
+{% endblock %}

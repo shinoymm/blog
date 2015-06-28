@@ -1,0 +1,63 @@
+{% for blog in object_list %}
+    {% if blog.post_type == 3 %}
+      <div class="row pic-panel z-depth-1">
+      <div class="parallax-container">
+        <div class="parallax"><img src="{{ MEDIA_URL }}{{blog.pic}}"></div>
+      </div>
+        <hr>
+        <div class="card-action">
+          <div class="left row col s12">
+            <button id="comment_{{blog.id}}" class="btn waves-effect waves-light mdi-editor-insert-comment"
+                    value="{{blog.id}}" onclick="get_comments(this.value)">{% if blog.comments %}{{blog.comments|length}}{% endif %}</button>
+          </div>
+        <div id="comments_{{blog.id}}" class="row col s12"></div>
+        </div>
+      </div>
+    {% elif blog.post_type == 1 %}
+      <div class="row card-panel">
+      <div class=" card-content">
+        <h4 class="blog-title">{{blog.title}}</h4>
+        <div class="blog-subhead">
+          <h6 class="left">{{blog.posted_on}}</h6>
+          <div id="tags-panel" class="right">
+            {% for i in blog.tags %}
+            <b> #{{i.name}} </b>
+            {% endfor %}
+          </div>
+        </div>
+        <p class="word-wrapper">{{blog.content|linebreaks}}</p>
+        <hr/>
+        <div class="card-action">
+          <div class="left row col s12">
+            <button id="comment_{{blog.id}}" class="btn waves-effect waves-light mdi-editor-insert-comment"
+                    value="{{blog.id}}" onclick="get_comments(this.value)">{% if blog.comments %}{{blog.comments|length}}{% endif %}</button>
+          </div>
+        <div id="comments_{{blog.id}}" class="row col s12"></div>
+        </div>
+      </div>
+    </div>
+    {% else %}
+      <div class="row card-panel">
+      <div class=" card-content">
+        <p class="word-wrapper">{{blog.content|linebreaks}}</p>
+        <hr/>
+        <div class="blog-subhead">
+          <h6 class="left">{{blog.posted_on}}</h6>
+          <div id="tags-panel" class="right">
+            {% for i in blog.tags %}
+            <b> #{{i.name}} </b>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="card-action">
+          <div class="left row col s12">
+            <button id="comment_{{blog.id}}" class="btn waves-effect waves-light mdi-editor-insert-comment" value="{{blog.id}}"
+                    onclick="get_comments(this.value)">{% if blog.comments %}{{blog.comments|length}}{% endif %}</button>
+          </div>
+        <div id="comments_{{blog.id}}" class="row col s12"></div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  {% endfor %}

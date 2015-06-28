@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% load staticfiles %}
+{% block body-class %}class="yellow"{% endblock %}
+{% block content %}
+<div class="read-title">
+  {{object_list.title}}
+</div>
+{{object_list.content|linebreaks}}
+{% include 'comment_list.html' %}
+{% endblock %}
+
+{% block extrajs %}
+{{block.super}}
+<script type="text/javascript" src="{% static 'js/sh_blog.js' %}"></script>
+{% endblock %}

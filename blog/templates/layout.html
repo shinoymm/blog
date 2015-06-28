@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block header %}
+<div class="red darken-41 header z-depth-1 valign-wrapper">
+  <div class="container title-image">
+    <div class="row">
+      <div class="col s6 ">
+        <!--<img src="{% static 'image/title.png' %}" height="200">-->
+      </div>
+    </div>
+
+    {% if user.is_authenticated %}
+      <div class="row">
+        <div class="col s2 offset-s8">Hi {{user}}</div>
+        <div class="col s2">
+          <a href="{% url 'logout' %}" class="white-text right">Sign Out</a>
+        </div>
+      </div>
+    {% else %}
+      <div class="row">
+        <div class="col s3 offset-s10">
+          <!--<button class="btn waves-effect waves-light red accent-1"><i class="mdi-social-person left"></i>Sign in</button>-->
+          <a class="btn waves-effect waves-light red accent-1" href="{% url 'login' %}"><i class="mdi-social-person left"></i>Sign in</a>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
+
+{% block nav_bar %}
+  <nav class="white">
+      <div class="nav-wrapper container">
+        <ul id="nav-blog" class="right hide-on-med-and-down">
+          <li><b><a href="{% url 'scribble' %}" class="teal-text lighten-2"><i class="mdi-content-content-paste left"></i>Write Something</a></b></li>
+          <li><b><a href="{% url 'pic' %}" class="teal-text lighten-2"><i class="mdi-image-photo-camera right"></i>Add a Pic</a></b></li>
+        </ul>
+      </div>
+    </nav>
+{% endblock %}
+
+{% block gen-nav %}
+  <nav class="white">
+    <div class="nav-wrapper container">
+      <ul id="gen-nav-blog" class="right hide-on-med-and-down">
+        <li><b><a href="{% url 'home' %}" class="teal-text lighten-2"><i class="mdi-maps-local-library left"></i>Home</a></b></li>
+        <li><b><a href="{% url 'blogs' %}?type=1" class="teal-text lighten-2"><i class="mdi-action-view-list left"></i>Blogs</a></b></li>
+        <li><b><a href="{% url 'blogs' %}?type=3" class="teal-text lighten-2"><i class="mdi-image-photo left"></i>Pics</a></b></li>
+      </ul>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block no-login %}
+<h1>Login to Start Blogin</h1>
+{% endblock %}
+

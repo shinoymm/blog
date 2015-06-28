@@ -1,0 +1,11 @@
+<ul class="collection">
+{% for obj in comment_objects %}
+<li class="collection-item avatar">
+  <i class="mdi-social-person circle green"></i>
+  <span class="title comment-title">{{obj.commenter}}</span>
+  <p>{{obj.content}}</p>
+</li>
+
+{% endfor %}
+</ul>
+{% include 'comment_form.html' %}

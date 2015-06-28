@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+  {% block content %}
+    {% if errors %}
+      <div class="row">
+        <div class="col s12">
+          <div class="card-panel red lighten-3">
+            <span class="white-text">{{errors}}</span>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+    <form action="{% url 'login' %}" method="post">
+      {% csrf_token %}
+      <div class="row input-field">
+        <div class="col s12">
+          {{login.username}}<div class="red-text">{{form.username.errors}}</div>
+          <label for="id_username">Username/Mail</label>
+        </div>
+      </div>
+      <div class="row input-field">
+        <div class="col s12">
+          {{login.password}}<div class="red-text">{{form.password.errors}}</div>
+          <label for="id_password">Password</label>
+        </div>
+      </div>
+      <!--<input type="submit">-->
+      <button class="btn waves-effect waves-light btn-large" type="submit">Login</button>
+    </form>
+
+<hr>
+
+  <div class="row">
+  <div class="card centered col s8 offset-s2 red darken-4 z-depth-2">
+    <div class="card-content">
+    <form action="{% url 'signup' %}" method="post">
+      {% csrf_token %}
+      <div class="row input-field">
+        <div class="col s12">
+          {{signup.s_username}}<div class="red-text">{{form.s_username.errors}}</div>
+          <label for="id_s_username">Username/Mail</label>
+        </div>
+      </div>
+      <div class="row input-field">
+        <div class="col s12">
+          {{signup.s_mail}}<div class="red-text">{{form.s_mail.errors}}</div>
+          <label for="id_s_username">Mail</label>
+        </div>
+      </div>
+      <div class="row input-field">
+        <div class="col s12">
+          {{signup.s_password}}<div class="red-text">{{form.s_password.errors}}</div>
+          <label for="id_s_password">Password</label>
+        </div>
+      </div>
+      <div class="row input-field">
+        <div class="col s12">
+          {{signup.s_password2}}<div class="red-text">{{form.s_password2.errors}}</div>
+          <label for="id_s_password">Password Again</label>
+        </div>
+      </div>
+      <button class="btn waves-effect waves-light btn-large" type="submit">Sign in</button>
+    </form>
+    </div>
+    </div>
+    </div>
+  {% endblock %}

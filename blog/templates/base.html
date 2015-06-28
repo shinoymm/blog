@@ -1,0 +1,35 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>{% block title %}{% endblock %}</title>
+  {% block css %}
+    <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+  {% endblock %}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <header id="header">
+    {% block header %}{% endblock %}
+    {% if user.is_authenticated %}
+      {% block nav_bar %}{% endblock %}
+      {% block gen-nav %}{% endblock %}
+    {% else %}
+      <div class="container">{% block no-login %}{% endblock %}</div>
+    {% endif %}
+  </header>
+</head>
+<body {% block body-class %}{% endblock %}>
+  <div class="container">
+  {% block content %}{% endblock %}
+  </div>
+  <footer id="footer">
+    {% block footer %}{% endblock %}
+  </footer>
+  {% block js %}
+    <script type="text/javascript" src="{% static 'js/jquery-2.1.3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+  {% endblock %}
+  {% block extrajs %}{% endblock %}
+</body>
+</html>

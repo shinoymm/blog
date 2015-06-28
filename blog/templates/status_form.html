@@ -1,0 +1,17 @@
+<form action="{% url 'scribble' %}" method="post">
+  <div class="row">
+      <div class="row card indigo z-depth-3">
+        <div class="row input-field col s12">
+          <!--<textarea id="status_input" class="materialize-textarea"></textarea>-->
+          {{status_form.content}}
+          <label for="status_input">What's on your Mind</label>
+          {{status_form.title}}
+          {{status_form.post_type}}
+          {% csrf_token %}
+        </div>
+        <div class="card-action">
+          <button class="btn waves-effect waves-light btn-large" type="submit">Post</button>
+        </div>
+      </div>
+  </div>
+</form>

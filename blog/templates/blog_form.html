@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block content %}
+<form action="{% url 'scribble' %}" method="post">
+  <div class="row">
+    <div class="col s12">
+      <div class="card blue-grey lighten-4">
+        <div class="card-content input-field">
+          {% csrf_token %}
+          {{form.title}}
+          <label for="blog_title">Add a Title</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{form.content}}
+  <div class="row input-field col s12">
+    {{form.tags}}
+    <label for="blog_tags">Add Tags</label>
+  </div>
+  {{form.post_type}}
+  <button class="btn waves-effect waves-light btn-large" type="submit">Post</button>
+</form>
+{% endblock %}
